@@ -7,12 +7,16 @@ import java.util.regex.Pattern;
 public class TagContenExtractor {
 
     public static void main(String[] args) {
-        String sample = "<h1>Nayeem loves counseling</h1>";
-        String HTML_PATTERN = "</h1>";
+        String sample = "<h1><h1>Sanjay has no watch</h1></h1><par>So wait for a while</par>";
+        String HTML_PATTERN = "<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>";
         Pattern tagPattern = Pattern.compile(HTML_PATTERN);
         Matcher match = tagPattern.matcher(sample);
 
-        System.out.println(match.group());
+        if (match.find()){
+            String ans = match.group(1);
+            System.out.println(ans);
+        }
+      
 
         // Scanner in = new Scanner(System.in);
 		// int testCases = Integer.parseInt(in.nextLine());
