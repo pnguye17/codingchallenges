@@ -12,7 +12,7 @@ public class primality {
         BigInteger ans = new BigInteger(num);
 
 
-        if (ans.isProbablePrime(0)){
+        if (ans.isProbablePrime(100)){
             System.out.println("prime");
         } else {
             System.out.println("not prime");
