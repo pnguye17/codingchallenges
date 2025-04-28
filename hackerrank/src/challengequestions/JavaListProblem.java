@@ -35,7 +35,6 @@ public class JavaListProblem {
         }    
         sc.close();
 
-
     }
 
 
