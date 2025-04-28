@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class JavaListProblem {
 
+    private static final String STRING_INSERT = "Insert";
+
     public static void main(String[] args) {
         
         Scanner sc = new Scanner(System.in);
@@ -17,19 +19,20 @@ public class JavaListProblem {
         }
 
         int numOfQueries = sc.nextInt();
+        sc.nextLine();
 
-        if ( numOfQueries == 2){
-            System.out.println("Insert");
-            sc.next();
-            int x = sc.nextInt();
-            int y = sc.nextInt();
-            nums.set(y, x);
-            // System.out.println("Delete");
-            // int z = sc.nextInt();
-            // nums.remove(z);
-        }
+        while (numOfQueries > 0){
+            String query = sc.nextLine();
+            if (query.equalsIgnoreCase(STRING_INSERT)){
+                String[] xy = sc.nextLine().split(" ");
+                nums.add(Integer.parseInt(xy[0]), Integer.parseInt(xy[1]));
+            } else {
+                int n = sc.nextInt();
+                nums.remove(n);
+            }
+            numOfQueries--;
 
-        System.out.println(nums.toString());
+        }    
         sc.close();
 
 
