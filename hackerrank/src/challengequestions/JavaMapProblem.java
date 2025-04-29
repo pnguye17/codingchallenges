@@ -1,7 +1,5 @@
 package challengequestions;
 
-public class Checker {
-
-    
+public class JavaMapProblem {
 
 }
