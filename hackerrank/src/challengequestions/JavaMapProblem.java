@@ -15,6 +15,7 @@ public class JavaMapProblem {
     	Map<String, String> phoneBook = new HashMap<>();
     	
     	for (int i = 0; i < numOfQuery; i++) {
+			sc.next();
     		String name = sc.nextLine();
     		String phone = sc.nextLine();
     		phoneBook.put(name, phone);
@@ -22,9 +23,7 @@ public class JavaMapProblem {
     	
     	sc.close();
     	
-    	phoneBook.forEach((k,v) -> System.out.printf(
-    			k.toString(),v.toString()
-    			));
+		System.out.println(phoneBook.toString());
     	
     	
    
