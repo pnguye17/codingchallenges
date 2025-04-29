@@ -4,8 +4,11 @@ public class Printer<T> {
 
     T objT;
 
-    public <T> void printArray(){
-        System.out.println(this.objT.toString());
+    @SuppressWarnings("hiding")
+    public <T> void printArray(T[] obT){
+        for (T ele: obT){
+            System.out.println(ele);
+        }
     }
 
 }

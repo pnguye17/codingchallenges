@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 
 public class JavaGeneric {
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public static void main( String args[] ) {
         Printer myPrinter = new Printer();
         Integer[] intArray = { 1, 2, 3 };

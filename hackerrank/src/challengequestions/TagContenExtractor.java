@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 public class TagContenExtractor {
 
+    @SuppressWarnings("unused")
     public static void main(String[] args) {
        Scanner in = new Scanner(System.in);
 		int testCases = Integer.parseInt(in.nextLine());

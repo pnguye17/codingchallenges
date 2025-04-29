@@ -45,6 +45,8 @@ public class JavaSort {
       	for(Student st: studentList){
 			System.out.println(st.getFname());
 		}
+        in.close();
     }
+
 
 }
