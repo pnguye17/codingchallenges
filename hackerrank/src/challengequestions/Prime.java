@@ -1,14 +1,17 @@
 package challengequestions;
 
+import java.math.BigInteger;
 
-public class Prime {
-
-    public static void checkPrime(int n) {
-        if (n == 1 ) {
-            System.out.println("Not a prime");
-        } 
-        if (n % n == 0 && n % 1 == 0) {
-            System.out.println(n);
+class Prime {
+    
+    public void checkPrime(int ... numbers) {
+        StringBuilder message = new StringBuilder();
+        for (int number : numbers) {
+            if (BigInteger.valueOf(number).isProbablePrime(100)) {
+                 message.append(number).append(" ");
+            }
         }
-    } 
+        System.out.println(message);
+    }
+    
 }
