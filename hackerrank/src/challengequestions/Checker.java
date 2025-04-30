@@ -2,16 +2,26 @@ package challengequestions;
 
 import java.util.Comparator;
 
-public class Checker<T> implements Comparator<T>{
 
-    @Override
-    public int compare(T o1, T o2) {
+
+class Checker implements Comparator<Player> {
     
-        // compare score of the player object and sort them 
+        @Override
+        public int compare(Player p1, Player p2){
+            
+            Player a = (Player) p1;
+            Player b = (Player) p2;
+            
+            if (a.score < b.score) return 1;
+            if (a.score > b.score) return -1;
 
-        throw new UnsupportedOperationException("Unimplemented method 'compare'");
+            if (a.score == b.score) {
+                return a.name.compareTo(b.name);
+            }
+               
+            return 0;
+            
+        }
     }
 
-    
 
-}
