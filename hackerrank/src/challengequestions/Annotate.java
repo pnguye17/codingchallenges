@@ -1,5 +1,7 @@
 package challengequestions;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 import java.lang.reflect.Method;
 import java.util.Scanner;
 
@@ -7,18 +9,19 @@ import java.util.Scanner;
 @Retention(RetentionPolicy.RUNTIME)
 @interface FamilyBudget {
 	String userRole() default "GUEST";
-	~~Complete the interface~~
+    int budgetLimit() default 100;
+	
 }
 
 class FamilyMember {
-	~~Complete this line~~
+	@FamilyBudget(userRole = "SENIOR", budgetLimit = 100)
 	public void seniorMember(int budget, int moneySpend) {
 		System.out.println("Senior Member");
 		System.out.println("Spend: " + moneySpend);
 		System.out.println("Budget Left: " + (budget - moneySpend));
 	}
 
-	~~Complete this line~~
+    @FamilyBudget(userRole = "JUNIOR", budgetLimit = 50)
 	public void juniorUser(int budget, int moneySpend) {
 		System.out.println("Junior Member");
 		System.out.println("Spend: " + moneySpend);
@@ -28,6 +31,7 @@ class FamilyMember {
 
 
 public class Annotate {
+@SuppressWarnings("deprecation")
 public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		int testCases = Integer.parseInt(in.nextLine());
@@ -35,16 +39,17 @@ public static void main(String[] args) {
 			String role = in.next();
 			int spend = in.nextInt();
 			try {
-				Class annotatedClass = FamilyMember.class;
+				@SuppressWarnings("rawtypes")
+                Class annotatedClass = FamilyMember.class;
 				Method[] methods = annotatedClass.getMethods();
 				for (Method method : methods) {
 					if (method.isAnnotationPresent(FamilyBudget.class)) {
 						FamilyBudget family = method
 								.getAnnotation(FamilyBudget.class);
 						String userRole = family.userRole();
-						int budgetLimit = ~~Complete this line~~;
+						int budgetLimit = family.budgetLimit();
 						if (userRole.equals(role)) {
-							if(~~Complete this line~~){
+							if(spend <= budgetLimit){
 								method.invoke(FamilyMember.class.newInstance(),
 										budgetLimit, spend);
 							}else{
@@ -58,5 +63,6 @@ public static void main(String[] args) {
 			}
 			testCases--;
 		}
+        in.close();
 	}
 }
